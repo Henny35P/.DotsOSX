@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cleanup() {
+    rm /tmp/mpd_cover.jpg 2>/dev/null
+    pkill -P $$ 2>/dev/null
+    pkill ncmpcpp_cover_art.sh
+}
+
+pkill -P $$ 2>/dev/null
+trap cleanup EXIT 2>/dev/null
+
+ncmpcpp
+cleanup
